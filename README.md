@@ -1,3 +1,1 @@
-# OpenSource-Homework2
-
-## OpenSource Homework - top, ps, jobs, kill Instruction
+# top, ps, jobs, kill Instruction
