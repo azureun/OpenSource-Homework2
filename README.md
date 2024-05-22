@@ -76,8 +76,23 @@ $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용�
 - -b : 출력결과를 파일이나 다른 프로그램으로 전달
 - -d : 화면 갱신 주기를 초 단위로 설정
 - -p : 지정한 PID 프로세스를 모니터링
-
-
+---
+#### [top 명령어 출력 구조]
+- 시스템에 대한 전반적인 요약
+![alt ps aux](/img/system_sum.png)
+> - 1st line : 현재시간, 서버 가동 후 유지시간, 현재 접속 사용자, 최근 1,5,15분 동안 시스템 부하
+> - 2nd line : 프로세스 상태(총 프로세스, 실행중, sleep, stop, 좀비 프로세스)
+> - 3rd line : cpu 상태
+> - 4th line : MEM 상태
+> - 5th line : swap memory 상태
+- cpu를 사용하는 순으로 프로세스들 정렬해서 보여줌.
+![alt ps aux](/img/cpu_use.png)
+> - PR : 우선순위
+> - NI(nice value) : 20~19 사이의 수. 값이 작을수록 우선순위 높음.
+> - VIRT : 작업에 사용된 가상 메모리 총 사용량
+> - RES : 프로세스가 사용하는 실제 메모리양
+> - S : 현재 프로세스의 상태 나타냄.
+> - TIME+ : 프로세스가 시작하여 사용한 CPU 시간
 
 ## 2. 프로세스 제어
 ### ▶️ kill (시그널, 프로세스 종료)
@@ -88,13 +103,25 @@ $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용�
   $ kill -9 PID    #PID를 시그널 번호 9(KILL) 전송해서 죽임
   $ kill -TERM -1  # 자신이 실행한 모든 프로세스를 종료
   ```
-
-
+![alt ps aux](/img/kill.png)
+#### [시그널 번호별 의미]
+번호|시그널|의미
+:---:|:---:|:---
+1|SIGUP|터미널에서 접속이 끊겼을때 보내지는 시그널. 변화된 내용을 적용하기 위해 재시작 할 때 사용.
+2|SIGINT|인터럽트 시그널로 실행 중지시킴. Ctrl+c 입력시 보내짐.
+3|SIGQUIT|실행중지 시그널로 Ctrl+\ 입력시 보내짐.
+9|SIGKILL|프로세스를 강제로 종료시키는 시그널
+15|SIGTERM|kill의 기본 시그널. 정상 종료시키는 시그널
+18|SIGCONT|시그널에 의해 정지된 프로세스를 다시 실행시키는 시그널
+19|SIGSTOP|정지 시그널
+20|SIGTSTP|일지정지 시키는 시그널. Ctrl+z 입력시 보내짐.
 
 ## 3. 프로세스 전환
 ### ▶️ jobs (백그라운드 프로세스 출력)
+- 현재 돌아가고 있는 백그라운드 프로세스 리스트를 모두 출력.
+- `$ jobs [options] [job name or number]`
 
-
+<img src="/img/jobs.png" alt="jobs" width="340px" height="200px">
 
 ---
 **[출처]**
