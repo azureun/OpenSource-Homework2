@@ -32,15 +32,63 @@
 > - System V : - 사용<br>
 > - BSD : - 사용하지 않음.
 
-[프로세스 항목과 의미]
-![alt 프로세스 항목]()
+#### [프로세스 도표 항목과 의미]
+![alt 프로세스 항목](/img/process.png)
+- F : 프로세스 플래그
+- S : 프로세스 상태코드
+- UID : 프로세스 소유자 이름
+- PID : 프로세스 고유식별자
+- PPID : 부모프로세스의 PID
+- C : 프로세서 사용률 (%로 표기)
+- PRI : 프로세스의 우선순위. 높은 값이 낮은 우선순위
+- NI : nice 값. 19~20
+- SZ : 프로세스 이미지가 차지하는 물리적 페이지 크기
+- WCHAN : 대기중일때 커널 함수의 이름
+- STIME : 프로세스가 시작한 시간
+- TTY : 터미널의 종류
+- TIME : 총 CPU 사용시간
+- CMD : 프로세스의 실행 시 명령줄
 
+#### [ps 옵션 조합 예시 : aux/-ef]
+1. `ps aux`
+   - 프로세스 상태를 보는 용도
+```BASH
+$ ps aux                 # 모든 터미널의 프로세스 소유자 정보와 함께 프로세스 정보를 출력.
+$ ps aux | grep apache   # 특정 프로세스(apache)만 출력
+```
+![alt ps aux](/img/aux.png)
+
+2. `ps -ef`
+   - 부모 프로세스와 자식 프로세스의 관계를 보는 용도
+```BASH
+$ ps -ef                  # 현재 실행중인 모든 프로세스의 정보를 전체 포맷으로 출력
+$ ps -ef | more           #모든 프로세스의 full 포맷으로 보여줌. more 명령어로 페이지 단위로 출력.
+$ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용하여 apache가 포함된 라인들 출력.
+```
+![alt ps ef](/img/ef.png)
 
 ### top (실시간 프로세스 출력)
-- 
+- 현재 시스템에서 실행 중인 프로세스에 관한 정보를 **실시간**으로 출력.
+- `$ top [option]`
+#### [옵션]
+- -n : 지정한 숫자만큼 화면 출력을 갱신
+- -u : 지정한 사용자의 프로세스를 모니터링
+- -b : 출력결과를 파일이나 다른 프로그램으로 전달
+- -d : 화면 갱신 주기를 초 단위로 설정
+- -p : 지정한 PID 프로세스를 모니터링
+
+
 
 ## 2. 프로세스 제어
 ### kill (시그널, 프로세스 종료)
+- 불필요한 프로세스, 잘못 실행된 프로세스를 죽임
+- ```BASH
+  $ kill [options] [pid]
+
+  $ kill -9 PID    #PID를 시그널 번호 9(KILL) 전송해서 죽임
+  $ kill -TERM -1  # 자신이 실행한 모든 프로세스를 종료
+  ```
+
 
 
 ## 3. 프로세스 전환
@@ -51,4 +99,5 @@
 ---
 **[출처]**
 - [Inpa Dev](https://inpa.tistory.com/entry/LINUX-%F0%9F%93%9A-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B4%80%EB%A6%AC-%EB%AA%85%EB%A0%B9%EC%96%B4-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC-Foreground-Background "InpaDev")
+- [zetawiki](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_jobs "zetawiki")
 
