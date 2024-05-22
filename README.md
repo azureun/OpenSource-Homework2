@@ -104,6 +104,13 @@ $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용�
   $ kill -TERM -1  # 자신이 실행한 모든 프로세스를 종료
   ```
 ![alt kill](/img/kill.png)
+
+#### [옵션]
+- -s <signal> : 특정 시그널을 사용해 프로세스 종료. 기본적으로 SIGTERM 시그널이 사용됨.
+- -l, --list : 지원되는 시그널 목록 출력.
+- -a, --all : 현재 사용자에 속한 모든 프로세스 종료.
+- -q, --queue : 프로세스에 시그널을 보내는 대신 시그널을 대기열에 추가.
+
 #### [시그널 번호별 의미]
 번호|시그널|의미
 :---:|:---:|:---
@@ -115,6 +122,7 @@ $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용�
 18|SIGCONT|시그널에 의해 정지된 프로세스를 다시 실행시키는 시그널
 19|SIGSTOP|정지 시그널
 20|SIGTSTP|일지정지 시키는 시그널. Ctrl+z 입력시 보내짐.
+
 
 ## 3. 프로세스 전환
 ### ▶️ jobs (백그라운드 프로세스 출력)
@@ -131,6 +139,7 @@ $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용�
 ---
 **[참고]**
 - [Inpa Dev](https://inpa.tistory.com/entry/LINUX-%F0%9F%93%9A-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B4%80%EB%A6%AC-%EB%AA%85%EB%A0%B9%EC%96%B4-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC-Foreground-Background "InpaDev")
+- [gr-st-dev](https://gr-st-dev.tistory.com/210 "gr-st")
 - [IBM](https://www.ibm.com/docs/ko/aix/7.2?topic=j-jobs-command "IBM")
 - [zetawiki](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_jobs "zetawiki")
   
