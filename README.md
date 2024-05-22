@@ -56,7 +56,7 @@
 $ ps aux                 # 모든 터미널의 프로세스 소유자 정보와 함께 프로세스 정보를 출력.
 $ ps aux | grep apache   # 특정 프로세스(apache)만 출력
 ```
-![alt ps aux](/img/aux.png)
+![alt aux](/img/aux.png)
 
 2. `ps -ef`
    - 부모 프로세스와 자식 프로세스의 관계를 보는 용도
@@ -65,7 +65,7 @@ $ ps -ef                  # 현재 실행중인 모든 프로세스의 정보를
 $ ps -ef | more           #모든 프로세스의 full 포맷으로 보여줌. more 명령어로 페이지 단위로 출력.
 $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용하여 apache가 포함된 라인들 출력.
 ```
-![alt ps ef](/img/ef.png)
+![alt ef](/img/ef.png)
 
 ### ▶️ top (실시간 프로세스 출력)
 - 현재 시스템에서 실행 중인 프로세스에 관한 정보를 **실시간**으로 출력.
@@ -79,14 +79,14 @@ $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용�
 ---
 #### [top 명령어 출력 구조]
 - 시스템에 대한 전반적인 요약
-![alt ps aux](/img/system_sum.png)
+![alt system_sum](/img/system_sum.png)
 > - 1st line : 현재시간, 서버 가동 후 유지시간, 현재 접속 사용자, 최근 1,5,15분 동안 시스템 부하
 > - 2nd line : 프로세스 상태(총 프로세스, 실행중, sleep, stop, 좀비 프로세스)
 > - 3rd line : cpu 상태
 > - 4th line : MEM 상태
 > - 5th line : swap memory 상태
 - cpu를 사용하는 순으로 프로세스들 정렬해서 보여줌.
-![alt ps aux](/img/cpu_use.png)
+![alt cpu_use](/img/cpu_use.png)
 > - PR : 우선순위
 > - NI(nice value) : 20~19 사이의 수. 값이 작을수록 우선순위 높음.
 > - VIRT : 작업에 사용된 가상 메모리 총 사용량
@@ -103,7 +103,7 @@ $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용�
   $ kill -9 PID    #PID를 시그널 번호 9(KILL) 전송해서 죽임
   $ kill -TERM -1  # 자신이 실행한 모든 프로세스를 종료
   ```
-![alt ps aux](/img/kill.png)
+![alt kill](/img/kill.png)
 #### [시그널 번호별 의미]
 번호|시그널|의미
 :---:|:---:|:---
@@ -123,8 +123,15 @@ $ ps -ef | grep apache    # 모든 프로세스의 출력값을 grep을 이용�
 
 <img src="/img/jobs.png" alt="jobs" width="340px" height="200px">
 
+#### [옵션]
+- -l : 각 작업에 대한 추가 정보(작업 번호, 현재 작업, 프로세스 그룹 ID, 상태, 작업을 시작한 명령) 제공.
+- -n : 최종 통지된 이후 중지 or 종료 작업만 표시
+- -p : 선택된 작업에 대한 프로세스 그룹 리더의 프로세스 ID를 표시
+
 ---
-**[출처]**
+**[참고]**
 - [Inpa Dev](https://inpa.tistory.com/entry/LINUX-%F0%9F%93%9A-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B4%80%EB%A6%AC-%EB%AA%85%EB%A0%B9%EC%96%B4-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC-Foreground-Background "InpaDev")
+- [IBM](https://www.ibm.com/docs/ko/aix/7.2?topic=j-jobs-command "IBM")
 - [zetawiki](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_jobs "zetawiki")
+  
 
